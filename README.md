@@ -1,5 +1,28 @@
-# Vue 3 + TypeScript + Vite
+# Vue Tic-Tac-Toe
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A simple and pretty web app to play Tic-Tac-Toe.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Features
+
+*   Play against another player (2-person mode).
+*   Play against a simple AI (1-person mode).
+*   Clean and modern user interface.
+
+## How to Play
+
+1.  Open the application in your browser.
+2.  Select a game mode: "Player vs Player" or "Player vs AI".
+3.  The first player is 'X', and the second player is 'O'.
+4.  Click on an empty cell to make your move.
+5.  The first player to get three of their marks in a row (up, down, across, or diagonally) is the winner.
+6.  If all 9 cells are filled and no one has won, the game is a draw.
+7.  Click the "Play Again" button to start a new game.
+
+## Development
+
+To run the application locally:
+
+```bash
+npm install
+npm run dev
+```
