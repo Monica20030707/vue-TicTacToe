@@ -1,6 +1,7 @@
 <template>
   <div class="cell" @click="handleClick">
-    {{ value }}
+    <img v-if="value === 'X'" src="../assets/x_symbol.png" alt="X" />
+    <img v-if="value === 'O'" src="../assets/o_symbol.png" alt="O" />
   </div>
 </template>
 
@@ -15,13 +16,23 @@ const handleClick = () => {
 
 <style scoped>
 .cell {
-  width: 100px;
-  height: 100px;
-  border: 1px solid #ccc;
+  width: 10vw;
+  height: 10vw;
+  border: 0.6vw solid #999;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 48px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cell:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.cell img {
+  width: 8vw;
+  height: 8vw;
 }
 </style>

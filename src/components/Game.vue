@@ -1,21 +1,21 @@
 <template>
   <div class="game">
-    <h1>Tic-Tac-Toe</h1>
+    <h1 class="bouncing-text">Tic-Tac-Toe</h1>
     <div class="game-mode">
-      <button @click="setGameMode('pvp')" :class="{ active: gameMode === 'pvp' }">Player vs Player</button>
-      <button @click="setGameMode('pvai')" :class="{ active: gameMode === 'pvai' }">Player vs AI</button>
+      <button @click="setGameMode('pvp')" :class="{ active: gameMode === 'pvp' }" class="bouncing-button">Player vs Player</button>
+      <button @click="setGameMode('pvai')" :class="{ active: gameMode === 'pvai' }" class="bouncing-button">Player vs AI</button>
     </div>
     <Board :board="board" @cell-click="handleCellClick" />
     <div v-if="winner" class="winner-message">
       <p v-if="winner === 'draw'">It's a draw!</p>
       <p v-else>Player {{ winner }} wins!</p>
-      <button @click="resetGame">Play Again</button>
+      <button @click="resetGame" class="bouncing-button">Play Again</button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import Board from './Board.vue';
 
 const gameMode = ref('pvp');
@@ -74,14 +74,16 @@ const resetGame = () => {
 };
 
 const aiMove = () => {
-  const availableCells = board.value
-    .map((cell, index) => (cell === null ? index : null))
-    .filter(index => index !== null);
+  setTimeout(() => {
+    const availableCells = board.value
+      .map((cell, index) => (cell === null ? index : null))
+      .filter(index => index !== null);
 
-  if (availableCells.length > 0) {
-    const randomIndex = availableCells[Math.floor(Math.random() * availableCells.length)] as number;
-    handleCellClick(randomIndex);
-  }
+    if (availableCells.length > 0) {
+      const randomIndex = availableCells[Math.floor(Math.random() * availableCells.length)] as number;
+      handleCellClick(randomIndex);
+    }
+  }, 1000);
 };
 </script>
 
@@ -90,40 +92,71 @@ const aiMove = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Arial', sans-serif;
+}
+
+.bouncing-text {
+  animation: bounce 2s infinite;
+}
+
+.bouncing-button {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }
 
 .game-mode {
-  margin-bottom: 20px;
+  margin-bottom: 2vh;
 }
 
 .game-mode button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin: 0 1vw;
+  padding: 1.5vh 3vw;
+  border: none;
+  border-radius: 2.5vh;
   cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 2.2vh;
+  transition: all 0.3s ease;
+  font-family: 'Coiny', cursive;
 }
 
 .game-mode button.active {
   background-color: #4CAF50;
   color: white;
+  transform: scale(1.1);
 }
 
 .winner-message {
-  margin-top: 20px;
+  margin-top: 2vh;
   text-align: center;
 }
 
 .winner-message p {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 4.8vh;
+  margin-bottom: 1vh;
 }
 
 .winner-message button {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 1.5vh 3vw;
+  border: none;
+  border-radius: 2.5vh;
   cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 2.2vh;
+  margin-top: 1vh;
+  transition: all 0.3s ease;
+  font-family: 'Coiny', cursive;
 }
 </style>
