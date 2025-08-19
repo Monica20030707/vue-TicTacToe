@@ -18,8 +18,8 @@ const handleClick = (index: number) => {
 <style scoped>
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 10vw);
-  grid-template-rows: repeat(3, 10vw);
-  gap: 1vw;
+  grid-template-columns: repeat(3, 7vw);
+  grid-template-rows: repeat(3, 7vw);
+  gap: 0;
 }
 </style>

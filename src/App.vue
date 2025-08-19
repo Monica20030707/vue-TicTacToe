@@ -2,7 +2,7 @@
   <div id="app">
     <Game />
     <footer>
-      <p>made by monica nguyen</p>
+      <p>Made by Monica Nguyen</p>
     </footer>
   </div>
 </template>

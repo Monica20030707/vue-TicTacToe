@@ -16,9 +16,7 @@ const handleClick = () => {
 
 <style scoped>
 .cell {
-  width: 10vw;
-  height: 10vw;
-  border: 0.6vw solid #999;
+  border: 0.4vw solid #999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +30,7 @@ const handleClick = () => {
 }
 
 .cell img {
-  width: 8vw;
-  height: 8vw;
+  width: 4vw;
+  height: 4vw;
 }
 </style>
